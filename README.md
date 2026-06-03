@@ -19,6 +19,8 @@
 ## Quick Setup
 To get started, install the required packages. You can run this command:
 
+(Some packages may need to be installed from AUR)
+
 **Arch Linux**:
 ```bash
 sudo pacman -S --needed hyprland waybar swaync rofi-wayland kitty nemo blueman pavucontrol wlogout network-manager-applet ttf-jetbrains-mono-nerd papirus-icon-theme grim slurp swww hyprlock
