@@ -1,0 +1,10 @@
+* {
+    bg:          rgba(0, 0, 0, 0.9);
+    bg-item:     rgba(255, 255, 255, 0.1);
+    bg-selected: @color2;
+    fg:          #ffffff;
+    fg-selected: #ffffff;
+    accent:      rgba(255, 255, 255, 0.25);
+    background-color: transparent;
+    text-color:       @fg;
+}

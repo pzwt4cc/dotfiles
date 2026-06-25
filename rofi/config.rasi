@@ -1,0 +1,81 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    icon-theme: "Papirus";
+    font: "JetBrains Mono 12";
+}
+
+@import "colors.rasi"
+
+window {
+    width:            700px;
+    background-color: @bg;
+    border:           0px;
+    border-radius:    20px;
+    padding:          0;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    padding: 20px;
+}
+
+inputbar {
+    children: [ entry ];
+    background-color: @bg-item;
+    border-radius:    12px;
+    margin:           0 0 20px 0;
+    padding:          10px 15px;
+}
+
+entry {
+    placeholder: "Search...";
+    placeholder-color: #6b6b6b;
+    text-color:       @fg;
+}
+
+listview {
+    lines:        5;
+    columns:      3;
+    fixed-height: false;
+    scrollbar:    false;
+    spacing:      12px;
+    padding:      14px 0px 0px 0px;
+}
+
+element {
+    padding:          10px;
+    border-radius:    16px;
+    border:           2px;
+    border-color:     transparent;
+}
+
+element normal.normal {
+    background-color: @bg-item;
+    text-color:       @fg;
+}
+
+element alternate.normal {
+    background-color: @bg-item;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @bg-selected;
+    text-color:       @fg-selected;
+    border:           2px;
+    border-color:     @accent;
+}
+
+element-icon {
+    size:             42px;
+    margin:           0 15px 0 0;
+    background-color: transparent;
+    text-color:       inherit;
+}
+
+element-text {
+    vertical-align:   0.5;
+    background-color: transparent;
+    text-color:       inherit;
+}
