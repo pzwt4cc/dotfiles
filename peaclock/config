@@ -1,0 +1,9 @@
+style active-fg magenta
+style colon-fg blue
+style background clear
+style inactive-bg clear
+style colon-bg magenta
+
+set hour-24 on
+set seconds off
+set date off

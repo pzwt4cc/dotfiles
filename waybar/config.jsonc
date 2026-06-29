@@ -1,0 +1,133 @@
+{
+    "output": "DP-2",
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+
+    // Left
+    "modules-left":   ["custom/arch", "custom/cpu", "custom/gpu", "memory", "hyprland/window"],
+    // Center
+    "modules-center": ["clock"],
+    // Right
+    "modules-right":  ["hyprland/workspaces", "tray", "bluetooth", "network", "pulseaudio", "custom/swaync", "custom/powermenu"],
+
+    // LEFT SIDE
+    "custom/arch": {
+        "format": " 󰣇 ",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+
+    "custom/cpu": {
+        "exec": "temp=$(cat /sys/class/hwmon/hwmon*/temp*_input 2>/dev/null | head -n 1 | awk '{print int($1/1000)}'); usage=$(top -bn1 | grep 'Cpu(s)' | awk '{print int($2+$4)}'); echo \"CPU: ${temp}°C ${usage}%\"",
+        "interval": 2,
+        "format": " {} "
+    },
+
+    "custom/gpu": {
+        "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu,memory.used --format=csv,noheader,nounits | awk -F', ' '{print \"GPU: \"$2\"°C \"$1\"% | VRAM: \"sprintf(\"%.1f\", $3/1024)\"GB\"}' 2>/dev/null || echo \"GPU: N/A\"",
+        "interval": 2,
+        "format": " {} "
+    },
+
+    "memory": {
+        "format": " RAM: {used:0.0f}/{total:0.0f}G ",
+        "interval": 2
+    },
+
+    "hyprland/window": {
+        "format": " {title} ",
+        "max-length": 40
+    },
+
+    // CENTER
+    "clock": {
+        "format": " {:%H:%M  |  %A, %b %d} ",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "months":     "<span color='#ffffff'><b>{}</b></span>",
+                "days":       "<span color='#dddddd'>{}</span>",
+                "today":      "<span color='#f7768e'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    // RIGHT SIDE
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "persistent-workspaces": { "*": [1, 2, 3, 4, 5] },
+        "format": "{icon}",
+        "format-icons": {
+            "default": "󰏖",
+            "active": "󰏗"
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "bluetooth": {
+        "format": " 󰂯 ",
+        "format-connected": " 󰂱 ",
+        "format-disabled": " 󰂲 ",
+        "on-click": "blueman-manager"
+    },
+
+    "network": {
+        "interval": 2,
+        "format-wifi": " 󰤨 ",
+        "format-ethernet": " 󰈀 ",
+        "format-linked": " 󰈀 ",
+        "format-disconnected": " 󰖪 ",
+        "tooltip-format": "{essid} ({signaldBm}dBm)\n󰇚 {bandwidthDownBytes}  󰕒 {bandwidthUpBytes}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "pulseaudio": {
+        "format": " {icon}  {volume}% ",
+        "format-muted": " 󰝟  Muted ",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "custom/swaync": {
+        "tooltip": true,
+        "format": " {icon} ",
+        "format-icons": {
+            "notification": "󰂚<span foreground='#f7768e'><sup></sup></span>",
+            "none": "󰂚",
+            "dnd-notification": "󰂛<span foreground='#f7768e'><sup></sup></span>",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󰂚<span foreground='#f7768e'><sup></sup></span>",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛<span foreground='#f7768e'><sup></sup></span>",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    "custom/powermenu": {
+        "format": " 󰐥 ",
+        "on-click": "wlogout -b 5",
+        "tooltip": false
+    }
+}

@@ -1,0 +1,38 @@
+@import "../../.cache/wal/colors-waybar.css";
+
+* {
+    all: unset;
+    font-family: sans-serif;
+    transition: 0.1s ease-in-out;
+}
+
+window {
+    background: rgba(18, 18, 25, 0.9);
+}
+
+button {
+    background-color: rgba(255, 255, 255, 0.2);
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    background-size: 30%;
+    color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+    font-size: 40px;
+    min-width: 150px;
+    min-height: 350px;
+}
+
+button:hover {
+    background-color: @color4;
+    border: 1px solid @color4;
+    color: #000000;
+}
+
+#lock { background-image: url("/home/pzwt4cc/.config/wlogout/icon/lock.png"); }
+#logout { background-image: url("/home/pzwt4cc/.config/wlogout/icon/logout.png"); }
+#suspend { background-image: url("/home/pzwt4cc/.config/wlogout/icon/suspend.png"); }
+#reboot { background-image: url("/home/pzwt4cc/.config/wlogout/icon/reboot.png"); }
+#shutdown { background-image: url("/home/pzwt4cc/.config/wlogout/icon/shutdown.png"); }
